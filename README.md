@@ -70,3 +70,97 @@ Desarrollé las vistas y layouts necesarios para la aplicación, utilizando Tail
 Para asegurar la correcta relación entre los datos, definí las relaciones entre usuarios y videojuegos y añadí traducciones en inglés y español. Configuré rutas protegidas y políticas de autorización para asegurar que solo los usuarios autorizados pudieran editar o eliminar sus videojuegos.
 
 Finalmente, creé factories y seeders para poblar la base de datos con datos de prueba, e implementé roles de usuario para manejar diferentes niveles de acceso. Todo este proceso me permitió aprender y practicar con Laravel y Tailwind CSS, construyendo una aplicación funcional desde cero.
+
+# Vamos a crear el archivo markdown con el contenido proporcionado
+contenido = """
+# Cómo Realicé el Proyecto
+
+Para comenzar con este proyecto, seguí una estructura de desarrollo organizada en pasos claros y definidos.
+
+## Inicialización del Proyecto
+
+Instalé Laravel y configuré Tailwind CSS y DaisyUI:
+
+```sh
+composer create-project --prefer-dist laravel/laravel videojuegos-app
+cd videojuegos-app
+npm install -D tailwindcss
+npx tailwindcss init
+npm install daisyui
+```
+Configuración de la Base de Datos
+Configuré la conexión a MySQL en el archivo .env y creé las migraciones necesarias:
+
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=videojuegos_db
+DB_USERNAME=mario
+DB_PASSWORD=mario12345
+APP_DEBUG=true
+APP_KEY=base64:PC74VyynVQ5VlINmyEBzG9h4aJgDx4XPITbZQ3aE6Sk=
+APP_URL=http://localhost
+```
+
+## Implementación de Autenticación
+Usé Laravel Breeze para manejar el registro e inicio de sesión de usuarios:
+```sh
+composer require laravel/breeze --dev
+php artisan breeze:install
+npm install
+npm run dev
+php artisan migrate
+```
+## Implementación de CRUD de Videojuegos
+Creé el controlador CRUD para los videojuegos y manejé la subida de imágenes:
+
+```php
+public function store(Request $request)
+{
+    $request->validate([
+        'nombre' => 'required',
+        'descripcion' => 'required',
+        'genero' => 'required',
+        'plataforma' => 'required',
+        'imagen' => 'nullable|image',
+    ]);
+
+    $data = $request->only('nombre', 'descripcion', 'genero', 'plataforma');
+    $data['user_id'] = Auth::id();
+
+    if ($request->hasFile('imagen')) {
+        $data['imagen'] = $request->file('imagen')->store('public/imagenes');
+    }
+
+    Videojuego::create($data);
+
+    return redirect()->route('videojuegos.index')->with('success', 'Videojuego creado correctamente.');
+}
+```
+
+## Relaciones y Traducciones
+Definí las relaciones en los modelos y añadí soporte para múltiples idiomas:
+
+```php
+// User.php
+public function videojuegos()
+{
+    return $this->hasMany(Videojuego::class);
+}
+
+// Videojuego.php
+public function user()
+{
+    return $this->belongsTo(User::class);
+}
+```
+
+## Seguridad y Autorización
+Configuré rutas protegidas y políticas de autorización:
+
+```php
+Route::middleware(['auth'])->group(function () {
+    Route::resource('videojuegos', VideojuegoController::class);
+});
+```
