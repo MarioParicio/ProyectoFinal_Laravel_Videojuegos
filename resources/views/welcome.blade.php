@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container mx-auto mt-10">
     @guest
-        <h1>Bienvenido a la aplicación de videojuegos</h1>
+        <h1 class="text-3xl font-bold text-center">Bienvenido a la aplicación de videojuegos</h1>
     @else
-        <h1>Bienvenido, {{ Auth::user()->name }}</h1>
+        <h1 class="text-3xl font-bold text-center">Bienvenido, {{ Auth::user()->name }}</h1>
     @endguest
 </div>
 @endsection
