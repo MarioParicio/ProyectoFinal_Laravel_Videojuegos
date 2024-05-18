@@ -3,13 +3,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Videojuego;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class VideojuegoController extends Controller
 {
     public function index()
     {
-        $videojuegos = Videojuego::where('user_id', Auth::id())->get();
+        $videojuegos = Videojuego::all();
         return view('videojuegos.index', compact('videojuegos'));
     }
 
@@ -29,7 +28,7 @@ class VideojuegoController extends Controller
         ]);
 
         $data = $request->only('nombre', 'descripcion', 'genero', 'plataforma');
-        $data['user_id'] = Auth::id();
+        $data['user_id'] = auth()->id();
 
         if ($request->hasFile('imagen')) {
             $data['imagen'] = $request->file('imagen')->store('public/imagenes');
@@ -40,16 +39,18 @@ class VideojuegoController extends Controller
         return redirect()->route('videojuegos.index')->with('success', 'Videojuego creado correctamente.');
     }
 
+    public function show(Videojuego $videojuego)
+    {
+        return view('videojuegos.show', compact('videojuego'));
+    }
+
     public function edit(Videojuego $videojuego)
     {
-        $this->authorize('update', $videojuego);
         return view('videojuegos.edit', compact('videojuego'));
     }
 
     public function update(Request $request, Videojuego $videojuego)
     {
-        $this->authorize('update', $videojuego);
-
         $request->validate([
             'nombre' => 'required',
             'descripcion' => 'required',
@@ -58,21 +59,19 @@ class VideojuegoController extends Controller
             'imagen' => 'nullable|image',
         ]);
 
-        $data = $request->only('nombre', 'descripcion', 'genero', 'plataforma');
+        $videojuego->update($request->only('nombre', 'descripcion', 'genero', 'plataforma'));
 
         if ($request->hasFile('imagen')) {
-            $data['imagen'] = $request->file('imagen')->store('public/imagenes');
+            $videojuego->imagen = $request->file('imagen')->store('public/imagenes');
         }
-
-        $videojuego->update($data);
 
         return redirect()->route('videojuegos.index')->with('success', 'Videojuego actualizado correctamente.');
     }
 
     public function destroy(Videojuego $videojuego)
     {
-        $this->authorize('delete', $videojuego);
         $videojuego->delete();
         return redirect()->route('videojuegos.index')->with('success', 'Videojuego eliminado correctamente.');
     }
 }
+
