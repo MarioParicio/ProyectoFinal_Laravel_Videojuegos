@@ -59,3 +59,14 @@
 
 - **Factories y Seeders**: Creación de factories y seeders para poblar la base de datos con datos de prueba.
 - **Roles de Usuario**: Implementación de roles de usuario para manejar diferentes niveles de acceso en la aplicación.
+
+## Cómo Realicé el Proyecto
+Para comenzar con este proyecto, seguí una estructura de desarrollo organizada en pasos claros y definidos. Primero, instalé y configuré Laravel, junto con Tailwind CSS y DaisyUI, para asegurar un diseño consistente y responsivo en todas las vistas. Utilicé Git para el control de versiones, realizando commits frecuentes para documentar el progreso.
+
+La configuración de la base de datos fue uno de los primeros pasos, definiendo las migraciones y modelos necesarios para los usuarios y videojuegos. Implementé un sistema de autenticación utilizando Laravel Breeze, con validaciones personalizadas para asegurar que los datos de los usuarios fueran correctos.
+
+Desarrollé las vistas y layouts necesarios para la aplicación, utilizando Tailwind CSS para estilizar las páginas. Implementé las funcionalidades CRUD para gestionar los videojuegos, incluyendo la opción de subir y visualizar imágenes.
+
+Para asegurar la correcta relación entre los datos, definí las relaciones entre usuarios y videojuegos y añadí traducciones en inglés y español. Configuré rutas protegidas y políticas de autorización para asegurar que solo los usuarios autorizados pudieran editar o eliminar sus videojuegos.
+
+Finalmente, creé factories y seeders para poblar la base de datos con datos de prueba, e implementé roles de usuario para manejar diferentes niveles de acceso. Todo este proceso me permitió aprender y practicar con Laravel y Tailwind CSS, construyendo una aplicación funcional desde cero.
