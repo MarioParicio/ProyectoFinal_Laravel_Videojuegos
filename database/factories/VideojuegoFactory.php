@@ -2,22 +2,21 @@
 
 namespace Database\Factories;
 
+use App\Models\Videojuego;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Videojuego>
- */
 class VideojuegoFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
+    protected $model = Videojuego::class;
+
     public function definition()
     {
         return [
-            //
+            'nombre' => $this->faker->word(),
+            'descripcion' => $this->faker->sentence(),
+            'genero' => $this->faker->word(),
+            'plataforma' => $this->faker->word(),
+            'user_id' => \App\Models\User::factory(),
         ];
     }
 }
