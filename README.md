@@ -1,0 +1,61 @@
+### Funcionalidades Principales
+
+- **CRUD de Videojuegos**: Permite crear, leer, actualizar y eliminar registros de videojuegos.
+- **Autenticación de Usuarios**: Los usuarios pueden registrarse, iniciar sesión y gestionar sus videojuegos.
+- **Diseño Responsivo**: Utiliza Tailwind CSS para un diseño responsivo y atractivo.
+- **Autorización**: Implementación de políticas de autorización para asegurar que solo los usuarios autorizados puedan editar o eliminar sus videojuegos.
+- **Subida de Imágenes**: Soporte para la subida y visualización de imágenes de los videojuegos.
+
+## Tecnologías Utilizadas
+
+- **Framework**: Laravel
+- **Base de Datos**: MySQL
+- **Diseño**: Tailwind CSS, DaisyUI
+- **Autenticación**: Laravel Breeze
+- **Control de Versiones**: Git
+- **Notificaciones**: SweetAlert2
+- **Íconos**: Heroicons
+
+## Características Implementadas
+
+### Instalación y Configuración
+
+- **Inicialización del Proyecto**: Instalación de Laravel y configuración del proyecto con Tailwind CSS y DaisyUI para el diseño de la interfaz.
+- **Control de Versiones**: Configuración inicial de Git y commits recurrentes para registrar el progreso del proyecto.
+
+### Gestión de Base de Datos
+
+- **Configuración de la Base de Datos**: Conexión a MySQL y creación de migraciones y modelos para las tablas de usuarios y videojuegos.
+- **Migraciones**: Creación de la tabla `videojuegos` con campos para almacenar la información básica de cada videojuego, así como la referencia al usuario que lo registró.
+
+### Autenticación y Registro
+
+- **Sistema de Autenticación**: Configuración de Laravel Breeze para el manejo de registro e inicio de sesión de usuarios.
+- **Validaciones**: Implementación de validaciones para los campos del formulario de registro, asegurando que los datos ingresados sean correctos.
+- **Opción "Remember Me"**: Inclusión de la funcionalidad "Remember Me" en el formulario de login.
+
+### Desarrollo de Interfaz de Usuario
+
+- **Layouts y Vistas**: Desarrollo de las vistas y layouts necesarios para la aplicación, incluyendo la vista de inicio, el formulario de login y las vistas para gestionar los videojuegos.
+- **Estilización**: Utilización de Tailwind CSS y DaisyUI para estilizar las páginas y mantener un diseño limpio y responsivo.
+
+### CRUD de Videojuegos
+
+- **Controlador CRUD**: Creación del controlador para gestionar las operaciones CRUD de los videojuegos.
+- **Subida de Imágenes**: Implementación de la funcionalidad de subida y visualización de imágenes para cada videojuego.
+- **Notificaciones**: Integración de SweetAlert2 para mostrar notificaciones y alertas amigables.
+
+### Relaciones y Traducciones
+
+- **Relaciones de Base de Datos**: Definición de relaciones entre los usuarios y los videojuegos (1:N).
+- **Traducciones**: Adición de traducciones a inglés y español utilizando el sistema de localización de Laravel.
+
+### Seguridad y Autorización
+
+- **Protección de Rutas**: Configuración de rutas protegidas por middleware para asegurar que solo los usuarios autenticados puedan acceder a ciertas funcionalidades.
+- **Políticas de Autorización**: Implementación de políticas de autorización para permitir solo a los usuarios autorizados editar o eliminar sus videojuegos.
+
+### Datos de Prueba
+
+- **Factories y Seeders**: Creación de factories y seeders para poblar la base de datos con datos de prueba.
+- **Roles de Usuario**: Implementación de roles de usuario para manejar diferentes niveles de acceso en la aplicación.
