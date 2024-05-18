@@ -71,8 +71,7 @@ Para asegurar la correcta relación entre los datos, definí las relaciones entr
 
 Finalmente, creé factories y seeders para poblar la base de datos con datos de prueba, e implementé roles de usuario para manejar diferentes niveles de acceso. Todo este proceso me permitió aprender y practicar con Laravel y Tailwind CSS, construyendo una aplicación funcional desde cero.
 
-# Vamos a crear el archivo markdown con el contenido proporcionado
-contenido = """
+
 # Cómo Realicé el Proyecto
 
 Para comenzar con este proyecto, seguí una estructura de desarrollo organizada en pasos claros y definidos.
